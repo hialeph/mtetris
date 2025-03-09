@@ -61,9 +61,10 @@ canvas {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     font-size: 0.9em;
     width: 100%;
+    padding: 0 5px;
 }
 
 .score-container {
@@ -80,8 +81,14 @@ canvas {
 
 .controls {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 5px;
+    flex: 1;
+}
+
+.controls button {
+    width: 100%;
+    padding: 8px 5px;
 }
 
 .control-info {
@@ -115,6 +122,7 @@ button:active {
 
 #start-btn {
     background-color: #2c5282;
+    margin-bottom: 5px;
 }
 
 #start-btn:hover, #start-btn:active {
@@ -231,6 +239,20 @@ button:active {
     display: none;
 }
 
+.next-piece-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.next-piece-container h3 {
+    margin-right: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
 /* 모바일 화면 최적화 */
 @media (max-width: 768px) {
     .game-container {
@@ -246,32 +268,35 @@ button:active {
     }
     
     .game-info {
-        flex-direction: column;
-        gap: 3px;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0 3px;
     }
     
     .next-piece-container {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
+        width: auto;
+        flex: 1;
     }
     
     .next-piece-container h3 {
         margin-right: 5px;
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
     
     .controls {
-        width: 100%;
-        justify-content: space-between;
+        flex-direction: column;
+        width: auto;
+        flex: 1;
     }
     
     .controls button {
-        flex: 1;
         padding: 5px;
         font-size: 0.8em;
+        margin-bottom: 3px;
     }
     
     .control-row button {
@@ -284,8 +309,8 @@ button:active {
     }
     
     canvas#next-piece {
-        max-width: 80px;
-        max-height: 80px;
+        max-width: 60px;
+        max-height: 60px;
     }
 }
 
@@ -315,8 +340,10 @@ button:active {
     .game-info {
         order: 3;
         width: 25%;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         margin-left: 5px;
+        padding: 0;
     }
     
     .mobile-controls {
@@ -338,5 +365,31 @@ button:active {
     canvas#next-piece {
         max-width: 60px;
         max-height: 60px;
+    }
+    
+    .next-piece-container {
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+    }
+    
+    .next-piece-container h3 {
+        margin-right: 0;
+        margin-bottom: 3px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        flex: 1;
+    }
+    
+    .controls button {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+    
+    canvas#next-piece {
+        max-width: 50px;
+        max-height: 50px;
     }
 }
