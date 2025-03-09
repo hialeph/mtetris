@@ -62,7 +62,7 @@ canvas {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    font-size: 0.9em;
+    font-size: 1em;
     width: 100%;
     padding: 0 5px;
 }
@@ -82,14 +82,13 @@ canvas {
 .controls {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     flex: 1;
 }
 
 .controls button {
     width: 100%;
-    padding: 8px 5px;
-    font-size: 0.9em;
+    padding: 10px;
+    font-size: 1em;
 }
 
 .control-info {
@@ -103,10 +102,10 @@ button {
     background-color: #4a4a4a;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 1em;
     transition: background-color 0.2s;
     user-select: none;
     -webkit-user-select: none;
@@ -243,7 +242,7 @@ button:active {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .next-piece-container {
@@ -278,7 +277,7 @@ button:active {
         flex-direction: row;
         justify-content: space-between;
         gap: 10px;
-        padding: 0 3px;
+        padding: 0 20px;
     }
     
     .next-piece-container {
@@ -302,8 +301,8 @@ button:active {
     
     .controls button {
         padding: 5px;
-        font-size: 0.8em;
-        margin-bottom: 3px;
+        min-height: 45px;
+        font-size: 1.2em;
     }
     
     .control-row button {
@@ -316,8 +315,8 @@ button:active {
     }
     
     canvas#next-piece {
-        max-width: 60px;
-        max-height: 60px;
+        max-width: 90px;
+        max-height: 90px;
     }
 }
 
