@@ -10,25 +10,38 @@ const ROWS = 20; // 행 수
 function resizeGame() {
     const gameContainer = document.querySelector('.game-container');
     const gameBoard = document.querySelector('.game-board');
-    const containerWidth = gameBoard.clientWidth;
+    const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     
     // 화면 방향 확인
-    const isLandscape = window.innerWidth > window.innerHeight;
+    const isLandscape = windowWidth > windowHeight;
+    
+    // 게임 컨테이너 크기 설정
+    gameContainer.style.width = windowWidth + 'px';
+    gameContainer.style.height = windowHeight + 'px';
     
     // 블록 크기 계산 (화면 방향에 따라 다르게 계산)
     let newBlockSize;
     
     if (isLandscape) {
         // 가로 모드일 때는 높이 기준으로 계산
-        const maxHeight = windowHeight * 0.75; // 화면 높이의 75%
+        const maxHeight = windowHeight * 0.8; // 화면 높이의 80%
         newBlockSize = Math.floor(maxHeight / ROWS);
+        
+        // 게임 보드 너비 제한
+        const maxWidth = windowWidth * 0.4; // 화면 너비의 40%
+        const calculatedWidth = newBlockSize * COLS;
+        
+        if (calculatedWidth > maxWidth) {
+            newBlockSize = Math.floor(maxWidth / COLS);
+        }
     } else {
         // 세로 모드일 때는 너비 기준으로 계산
-        newBlockSize = Math.floor(containerWidth / COLS);
+        const maxWidth = windowWidth * 0.95; // 화면 너비의 95%
+        newBlockSize = Math.floor(maxWidth / COLS);
         
         // 너무 큰 경우 제한
-        const maxHeight = windowHeight * 0.6; // 화면 높이의 60%
+        const maxHeight = windowHeight * 0.65; // 화면 높이의 65%
         const calculatedHeight = newBlockSize * ROWS;
         
         if (calculatedHeight > maxHeight) {
