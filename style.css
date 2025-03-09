@@ -89,6 +89,7 @@ canvas {
 .controls button {
     width: 100%;
     padding: 8px 5px;
+    font-size: 0.9em;
 }
 
 .control-info {
@@ -118,6 +119,12 @@ button:hover {
 button:active {
     background-color: #888888;
     transform: scale(0.95);
+}
+
+#start-btn, #pause-btn, #rotate-btn, #hard-drop-btn {
+    padding: 10px;
+    font-size: 1em;
+    width: 100%;
 }
 
 #start-btn {
