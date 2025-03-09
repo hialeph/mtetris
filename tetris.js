@@ -11,9 +11,33 @@ function resizeGame() {
     const gameContainer = document.querySelector('.game-container');
     const gameBoard = document.querySelector('.game-board');
     const containerWidth = gameBoard.clientWidth;
+    const windowHeight = window.innerHeight;
     
-    // 블록 크기 계산
-    const newBlockSize = Math.floor(containerWidth / COLS);
+    // 화면 방향 확인
+    const isLandscape = window.innerWidth > window.innerHeight;
+    
+    // 블록 크기 계산 (화면 방향에 따라 다르게 계산)
+    let newBlockSize;
+    
+    if (isLandscape) {
+        // 가로 모드일 때는 높이 기준으로 계산
+        const maxHeight = windowHeight * 0.75; // 화면 높이의 75%
+        newBlockSize = Math.floor(maxHeight / ROWS);
+    } else {
+        // 세로 모드일 때는 너비 기준으로 계산
+        newBlockSize = Math.floor(containerWidth / COLS);
+        
+        // 너무 큰 경우 제한
+        const maxHeight = windowHeight * 0.6; // 화면 높이의 60%
+        const calculatedHeight = newBlockSize * ROWS;
+        
+        if (calculatedHeight > maxHeight) {
+            newBlockSize = Math.floor(maxHeight / ROWS);
+        }
+    }
+    
+    // 최소 블록 크기 보장
+    newBlockSize = Math.max(newBlockSize, 10);
     
     if (newBlockSize !== BLOCK_SIZE) {
         BLOCK_SIZE = newBlockSize;
@@ -23,8 +47,9 @@ function resizeGame() {
         canvas.height = BLOCK_SIZE * ROWS;
         
         // 다음 블록 캔버스 크기 조정
-        nextCanvas.width = BLOCK_SIZE * 6;
-        nextCanvas.height = BLOCK_SIZE * 6;
+        const nextPieceSize = isLandscape ? BLOCK_SIZE * 3 : BLOCK_SIZE * 4;
+        nextCanvas.width = nextPieceSize;
+        nextCanvas.height = nextPieceSize;
         
         // 게임 다시 그리기
         if (piece) {
